@@ -1,23 +1,20 @@
-
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from locators_page import Locator
-import softest
 
 #PAGE OBJECT FOR Login, Burger Menu and Adding items to cart
 
-class BasePage:
+class Base:
     def __init__(self, driver):
         self.driver = driver
         self.locator = Locator()
     
     def get_element(self, locator):
         return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locator))
-
-#Test Case 1    
-class LoginPage(BasePage):
+   
+class LoginPage(Base):
     
     def login(self, username, password):
         self.get_element(self.locator.username_field).send_keys(username)
@@ -27,8 +24,8 @@ class LoginPage(BasePage):
         pageTitle = self.driver.title
         assert pageTitle == "Swag Labs"
 
-class MainPage(BasePage):
-
+#Test Case 01 - Test Burger Menu
+class BurgerDrawer(Base):
     def select_BURGER_BTN(self):
         self.get_element(self.locator.BURGER_BTN).click()
         print("\nBurger button clicked")
@@ -73,14 +70,13 @@ class MainPage(BasePage):
         self.get_element(self.locator.CLOSE_BURGER_BTN).click()
         print("Burger Menu has been closed")
 
-
-#Methods for Products page 
+class MainPage(Base):
   
     #Locators for find_elements //because find_elements does not support self.locator.<locator>?
     removed_buttons = ".btn.btn_secondary.btn_small.btn_inventory"    
     added_in_cart = ".inventory_item_name"  
 
-#Test Case 3 - Add 2 products in Products page and verify changes
+#Test Case 02.a - Add 2 products in Products page and verify changes by counting Remove button and Items displayed in Cart page
     def add_item1(self):
         self.get_element(self.locator.add_to_cart_item1).click()
         print("Item1 has been added")
@@ -109,7 +105,7 @@ class MainPage(BasePage):
         self.get_element(self.locator.continue_shopping_button).click()
 
 
-#Test Case 4 - Add 2 more items and verify changes in cart  
+#Test Case 02.b - Add 2 more items and verify changes in Cart page
     def add_item3(self):
         self.get_element(self.locator.add_to_cart_item3).click()
         print("Item3 has been added")
@@ -117,18 +113,17 @@ class MainPage(BasePage):
     def add_item4(self):
         self.get_element(self.locator.add_to_cart_item4).click()
         print("Item4 has been added")
+#then reuse open_cart, verify_cart_count
 
-    #then reuse open_cart, verify_cart_count
-
-#Test Case 5 - Go back to Products page and verify items added
-
-    #reuse select_Continue_Shopping_button, verify_removed_products 
+#Test Case 03 - Go back to Products page and verify Price of items added
+#reuse select_Continue_Shopping_button, verify_removed_products 
 
     def get_price_item1 (self, driver):
         item1_text = self.get_element(self.locator.item1_price_text).text
         item1_text = item1_text.replace("$", "")  # Remove the "$" character
         item1_price_int = float(item1_text) #use int if integer only
         print(item1_price_int)
+        
 
     def get_price_item2 (self, driver):
         item2_text = self.get_element(self.locator.item2_price_text).text
