@@ -14,7 +14,7 @@ def driver():
     # driver.implicitly_wait(3)
     # print(driver.title)
 
-    print("\nLaunch browser")
+    #print("\nLaunch browser")
 
     yield driver
     driver.close()
