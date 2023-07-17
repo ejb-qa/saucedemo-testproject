@@ -7,12 +7,12 @@ class Locator:
     login_btn = (By.XPATH, "//input[@id='login-button']")  
 
     #Locators for Burger Menu
-    BURGER_BTN = (By.XPATH, "//button[@id='react-burger-menu-btn']")
-    ALL_ITEM_BTN = (By.XPATH, "//a[@id='inventory_sidebar_link']")
-    ABOUT_BTN = (By.XPATH, "//a[@id='about_sidebar_link']")
-    LOGOUT_BTN = (By.XPATH, "//a[@id='logout_sidebar_link']")
-    RESET_STATE_BTN = (By.XPATH, "//a[@id='reset_sidebar_link']")
-    CLOSE_BURGER_BTN = (By.XPATH, "//button[@id='react-burger-cross-btn']")
+    burger_btn = (By.XPATH, "//button[@id='react-burger-menu-btn']")
+    all_item_btn = (By.XPATH, "//a[@id='inventory_sidebar_link']")
+    about_btn = (By.XPATH, "//a[@id='about_sidebar_link']")
+    logout_btn = (By.XPATH, "//a[@id='logout_sidebar_link']")
+    reset_state_btn = (By.XPATH, "//a[@id='reset_sidebar_link']")
+    close_burger_btn = (By.XPATH, "//button[@id='react-burger-cross-btn']")
 
     #Locators for Products Page and Cart
     add_to_cart_item1 = (By.XPATH, "//button[@id='add-to-cart-sauce-labs-backpack']")
@@ -28,3 +28,12 @@ class Locator:
     item2_price_text = (By.XPATH, "//div[@id='inventory_container']//div[2]//div[2]//div[2]//div[1]")   #used Rel XPATH)
     item3_price_text = (By.XPATH, "(//div[@class='inventory_item_price'][normalize-space()='$15.99'])[1]")  #used index XPATH)
     item4_price_text = (By.XPATH, "(//div[@class='inventory_item_price'][normalize-space()='$49.99'])[1]")
+
+    checkout_btn = (By.XPATH, "//button[@id='checkout']")
+
+    checkout1_first_name = (By.XPATH, "//input[@id='first-name']")
+    checkout1_last_name = (By.XPATH, "//input[@id='last-name']")
+    checkout1_postal_code = (By.XPATH, "//input[@id='postal-code']")
+    checkout1_continue = (By.XPATH, "//input[@id='continue']")
+    checkout1_cancel = (By. XPATH, "//button[@id='cancel']")
+    checkout1_title = (By.XPATH, "//span[@class='title']")

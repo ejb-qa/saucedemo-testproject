@@ -10,12 +10,12 @@
 \
 
 TC 
-1. Login
-2. Verify contents of  Hamburger menu and close
-3. Add 2 products from main page then verify changes in cart
-4. Open and add 2 more products - verify changes in cart in Products page and cart
+0. Login
+1. Verify contents of  Hamburger menu and close
+2. Add 2 products from main page then verify changes in cart
+   Open and add 2 more products - verify changes in cart in Products page and cart
  
-5. Go to All items page and verify that 4 items are added\ add in util folder? to check all products displayed on the page //Selenium Python Tutorial #52 - Create Test Automation Framework- Part 7
+3. Go to All items page and verify that 4 items are added\ add in util folder? to check all products displayed on the page //Selenium Python Tutorial #52 - Create Test Automation Framework- Part 7
 6. Remove 1 item from All items page.\
 7. Go to cart and remove 1 item.\
    Verify total in cart.\
@@ -29,3 +29,39 @@ TC
    Checout: Complete!\
 12. Back home\
 }
+
+
+
+
+
+
+
+NOTES
+
+CALLING A FUNCTION WITHIN A CLASS
+
+#     def got_to_cart_and_verify_count(self, main_page, cart_page):
+#         #No need to initialize cart_page and main_page since it was passed
+#         #when called from test_addItems and test_addMoreItems function
+
+#         #Count number of Removed buttons in page
+#         # remove_button_count = main_page.get_remove_button_count()
+#         # remove_count = len(remove_button_count)
+#         # print("\n>Cart has: ", remove_count, "remove buttons")
+
+#         cart_button = main_page.select_cart_button()
+#         assert cart_button.is_displayed(), "Error: Cart is not displayed"
+#         cart_button.click()
+
+#         #Check items displayed in Cart
+#         cart_items = cart_page.verify_cart_count()
+#         cart_count = len(cart_items)
+#         print("Cart has:", cart_count, "products")
+#         for list in cart_items:
+#             print("Product/s on cart:", list.text)
+
+#         continue_shopping_button = cart_page.select_continue_shopping_button()
+#         continue_shopping_button.click()
+
+TO CALL FROM DIFFERENT FUNCTION BUT WITHIN THE SAME CLASS
+       #self.got_to_cart_and_verify_count(main_page, cart_page)
