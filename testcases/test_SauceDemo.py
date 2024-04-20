@@ -55,6 +55,8 @@ class TestBurgerDrawer:
         driver.back()
         print("Back to Main page")
 
+        #added this part to fix the StaleElement error since the page was "refreshed" 
+        #and cannot find the elements after going to About page
         burger = BurgerDrawer(driver)
         burger_button = burger.get_burger_button()
         assert burger_button.is_displayed(), "Error: Burger button/menu is not displayed"
