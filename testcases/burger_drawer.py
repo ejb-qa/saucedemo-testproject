@@ -34,6 +34,7 @@ class BurgerDrawer(Base):
         return self.about_button
 
     def get_logout_button(self):
+        #self.driver.refresh()
         self.logout_button = self.get_element(self.locator.logout_btn)
         print("Logout button")
         return self.logout_button

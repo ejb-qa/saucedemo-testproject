@@ -3,6 +3,8 @@ from burger_drawer import BurgerDrawer
 from cart_page import CartPage, CheckOutStepOne
 import time
 from utils import CountRemoveButtonsAndCartItems, GetPriceListFromCart, GetPriceListFromMain
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 #Test Cases
 
@@ -51,9 +53,15 @@ class TestBurgerDrawer:
         print("You're currently in page:" , driver.current_url)
         assert "saucelabs" in driver.current_url, "Error: About button not displayed/selected" 
         driver.back()
-        driver.implicitly_wait(3) 
+        print("Back to Main page")
+
+        burger = BurgerDrawer(driver)
+        burger_button = burger.get_burger_button()
+        assert burger_button.is_displayed(), "Error: Burger button/menu is not displayed"
+        burger_button.click()
 
         logout_button = burger.get_logout_button()
+        print(logout_button)
         assert logout_button.is_displayed(), "Error: Logout button is not displayed" 
 
         reset_state_button = burger.get_reset_state_button()
@@ -61,7 +69,7 @@ class TestBurgerDrawer:
 
         close_burger_button = burger.get_close_burger_button()
         close_burger_button.click()
-        time.sleep(2)
+        time.sleep(2) 
 
 
 #Test Case for adding items to Cart
@@ -93,7 +101,7 @@ class TestMainPage:
         continue_shopping_button = cart_page.select_continue_shopping_button()
         continue_shopping_button.click()
 
-# add more items
+#add more items
     def test_add_more_items(self, driver):
 
         main_page = MainPageAddItems(driver)
